@@ -1,13 +1,12 @@
-document.getElementById("menu").addEventListener('click', function () {
-    document.getElementById('hamburger_menu').style.right = "0%";
-    console.log("clicked");
-  });
+document.getElementById("menu").addEventListener("click", function () {
+  document.getElementById('hamburger_menu').style.right = "0%";
+  console.log("clicked");
+});
 
-  document.getElementById("close").addEventListener("click", () => {
-    document.getElementById('hamburger_menu').style.right = "-147%";
-    console.log("cut");
-  });
-
+document.getElementById("close").addEventListener("click", () => {
+  document.getElementById('hamburger_menu').style.right = "-147%";
+  console.log("cut");
+});
   const container = document.getElementById("project");
   const showProjectButton = document.getElementById("showproject");
 
@@ -26,11 +25,12 @@ document.getElementById("menu").addEventListener('click', function () {
     }
   })
   function download(url) {
-    const a = document.createElement('a')
-    a.href = url
-    a.download = url.split('/').pop()
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = url.split('/').pop();
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
-
+  
+ 

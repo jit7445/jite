@@ -14,37 +14,97 @@
 <body>
     <section class="text-gray-600 body-font relative">
         <div class="container px-5 py-24 mx-auto">
-          
+          <form action="#">
             <div class="flex flex-col justify-center items-center w-full mb-12">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
-            
-                <div class="flex flex-col -m-2">
-                    <div class="p-2 ">
-                        <label for="name" class="leading-7 text-sm">Name</label>
-                        <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                    </div>
-                    <div class="p-2 ">
-                        <label for="name" class="leading-7 text-sm text-gray-600">Email</label>
-                        <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                    </div>
-                    <div class="p-2">
-                        <label for="name" class="leading-7 text-sm text-gray-600">Phone</label>
-                        <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                    </div>
-                    <div class="p-2 ">
-                        <label for="name" class="leading-7 text-sm text-gray-600">message</label>
-                        <textarea type="text-" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                   
-                    </textarea>
-            
-                    <div class="p-2 w-full">
-                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                    </div>
+              <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
+      
+              <div class="flex flex-col -m-2">
+                <div class="p-2">
+                  <label for="name" class="leading-7 text-sm">Name</label>
+                  <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                 </div>
+                <div class="p-2">
+                  <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                  <input type="text" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+                <div class="p-2">
+                  <label for="phone" class="leading-7 text-sm text-gray-600">Phone</label>
+                  <input type="text" id="phone" name="phone" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+                <div class="p-2">
+                  <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+                  <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+                </div>
+      
+                <div class="p-2 w-full">
+                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" type="submit">Submit</button>
+                </div>
+              </div>
             </div>
-            
+          </form>
         </div>
-    </section>
+      </section>
+      
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
+    <script>
+        const form = document.querySelector('form');
+  
+        function sendmail() {
+          const data = {
+            name: form.elements.name.value,
+            email: form.elements.email.value,
+            phone: form.elements.phone.value,
+            message: form.elements.message.value
+          };
+        console.log(data)
+          Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "vermajitender482@gmail.com",
+            Password: "1D19F22FAFADDAFF21F508C1C61CD5BC25BA",
+            To: 'vermajitender482@gmail.com',
+            From: "vermajitender482@gmail.com",
+            Subject: "this is email",
+            Body: data
+          })
+            .then(message => {
+              if (message === "OK") {
+                form.elements.name.value=''
+                form.elements.email.value=''
+           form.elements.phone.value=''
+             form.elements.message.value=''
+                Swal.fire({
+                  title: "Thank You!",
+                  text: "You clicked the button!",
+                  icon: "success"
+                });
+
+              } else {
+                Swal.fire({
+                  title: "Error!",
+                  text: "Failed to send email.",
+                  icon: "error"
+                });
+              }
+            })
+            .catch(error => {
+              console.error("Error sending email:", error);
+              Swal.fire({
+                title: "Error!",
+                text: "Failed to send email. Please try again.",
+                icon: "error"
+              });
+            });
+        }
+        
+        form.addEventListener("submit", (e) => {
+          console.log("submit")
+          e.preventDefault();
+          sendmail() ;
+        });
+        
+    </script>
 </body>
 
 </html>
