@@ -15,6 +15,7 @@ document.getElementById("close").addEventListener("click", () => {
       container.style.display = 'grid';
     } else {
       // container.style.display = 'none';
+      console.log("clicked")
       container.style.transition = 'all 2s ease-in';
         container.style.opacity = '0'; 
         setTimeout(() => {
